@@ -20,7 +20,7 @@ class RecipeItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // NumericFocusOrder(int.fromEnvironment(recipe.recipeName) );
+          NumericFocusOrder(int.fromEnvironment(recipe.recipeName) );
           Text(
             recipe.recipeName,
             style: const TextStyle(
