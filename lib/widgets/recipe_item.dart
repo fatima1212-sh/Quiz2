@@ -20,8 +20,9 @@ class RecipeItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // NumericFocusOrder(int.fromEnvironment(recipe.recipeName) );
           Text(
-            "Recipe name goes here",
+            recipe.recipeName,
             style: const TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
@@ -30,6 +31,10 @@ class RecipeItem extends StatelessWidget {
           ),
 
           const SizedBox(height: 8),
+          ElevatedButton(
+            onPressed: () => onSelectRating,
+            child: Text("Submiting Ratings"),
+          ),
         ],
       ),
     );

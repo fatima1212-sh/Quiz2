@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/screens/result_screen.dart';
 import '../widgets/recipe_item.dart';
 import '../data/recipes.dart';
 
@@ -14,23 +15,34 @@ class RecipesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      child: Column(
-        children: [
-          ...recipes.asMap().entries.map((entry) {
-            int index = entry.key;
-            var recipe = entry.value;
+    Widget screen = ResultScreen(
+      averageRating: averageRating,
+      topRecipeName: topRecipeName,
+      onRestart: onRestart,
+    );
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 25),
+      child: SizedBox(
+        width: double.infinity,
+        child: Column(
+          children: [
+            ...recipes.asMap().entries.map((entry) {
+              int index = entry.key;
+              var recipe = entry.value;
 
-            return RecipeItem(
-              recipe: recipe,
-              index: index,
-              onSelectRating: onSelectRating,
-            );
-          }),
-
-          const SizedBox(height: 20),
-        ],
+              return RecipeItem(
+                recipe: recipe,
+                index: index,
+                onSelectRating: onSelectRating,
+              );
+            }),
+            ElevatedButton(
+              onPressed: () => onSubmit(screen),
+              child: Text("Submit"),
+            ),
+            const SizedBox(height: 20),
+          ],
+        ),
       ),
     );
   }
