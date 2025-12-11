@@ -42,7 +42,7 @@ class _RecipeAppState extends State<RecipeApp> {
 
   void _selectingRating(int index, String rating) {}
 
-  void averageRating() {
+  double averageRating() {
     setState(() {});
   }
 
@@ -61,6 +61,8 @@ class _RecipeAppState extends State<RecipeApp> {
         onSelectRating: _selectingRating,
         onSubmit: _submit,
       );
+    }else if(selectedRatings.isEmpty){
+      screenWidget=ResultScreen(averageRating: averageRating, topRecipeName: topRecipeName, onRestart:_restart)
     }
 
     return Scaffold(
